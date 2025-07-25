@@ -159,11 +159,11 @@ const UserDashboard = () => {
   const username = session?.user?.username
   const email = session?.user?.email
 
-  // const baseUrl = `${window.location.protocol}//${window.location.host}`
-  // const profileUrl = `${baseUrl}/u/${username}`
+  const baseUrl = `${window.location.protocol}//${window.location.host}`
+  const profileUrl = `${baseUrl}/u/${username}`
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-  const profileUrl = `${baseUrl}/u/${session?.user?.username || ''}`;
+  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  // const profileUrl = `${baseUrl}/u/${session?.user?.username || ''}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(profileUrl);
