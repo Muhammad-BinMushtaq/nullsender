@@ -2,7 +2,7 @@
 
 import MessageCard from '@/components/message'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
+
 import { Switch } from '@/components/ui/switch'
 import { Message } from '@/models/user'
 import { AcceptMessageSchema } from '@/schemas/accceptMessageSchema'
@@ -10,14 +10,12 @@ import { ApiResponse } from '@/types/ApiResponse'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios, { AxiosError } from 'axios'
 import { Loader2, RefreshCcw } from 'lucide-react'
-import { set } from 'mongoose'
-import { User } from 'next-auth'
+
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { Skeleton } from "@/components/ui/skeleton"
+
 import * as z from 'zod'
 
 
@@ -26,8 +24,6 @@ const UserDashboard = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isSwitchLoading, setIsSwitchLoading] = useState(false)
-  const [isSessionLoading, setIsSessionLoading] = useState(false)
-  const router = useRouter()
 
 
   const handleDeleteMessages = async (messageId: string) => {
@@ -117,14 +113,10 @@ const UserDashboard = () => {
       fetchAcceptMessages()
       fetchAllMessages(false)
     }
-    // else if (status === 'unauthenticated') {
-    //   router.replace('/sign-in')
 
-
-    // }
   }
 
-    , [status, session, setValue, fetchAllMessages])
+    , [status, session, setValue, fetchAllMessages, fetchAcceptMessages])
 
 
   if (status === 'loading') {

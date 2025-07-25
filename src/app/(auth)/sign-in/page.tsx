@@ -29,11 +29,11 @@ import Link from 'next/link';
 
 
 
-export default function loginUser() {
+export default function LoginUser() {
+  const router = useRouter()
   const { data: session, status } = useSession()
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const router = useRouter()
 
 
   useEffect(() => {
