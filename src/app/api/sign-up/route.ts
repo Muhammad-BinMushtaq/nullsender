@@ -4,6 +4,8 @@ import bcrypt from 'bcrypt'
 import { sendVerificationEmail } from "@/helper/sendVerificationEmail"
 
 
+
+
 export async function POST(request: Request) {
     await dbConnection()
 
@@ -28,7 +30,7 @@ export async function POST(request: Request) {
 
 
         const existingUserByEmail = await UserModel.findOne({ email })
-        const verifyCode = Math.floor(10000 * Math.random() * 90000).toString()
+        const verifyCode = Math.floor(100000 + Math.random() * 900000).toString()
         if (existingUserByEmail) {
             if (existingUserByEmail.isVerified) {
                 return Response.json(
@@ -70,10 +72,11 @@ export async function POST(request: Request) {
         const emailResponse = await sendVerificationEmail(
             email,
             username,
-            password
+            verifyCode
         )
-
-        if (!emailResponse.messages) {
+        // console.log("resposne only", emailResponse)
+        // console.log(emailResponse.message)
+        if (!emailResponse.message) {
             return Response.json(
                 {
                     success: false,
@@ -97,7 +100,8 @@ export async function POST(request: Request) {
         return Response.json(
             {
                 success: false,
-                message: "Failed to login"
+                message: "Error registring user"
+
             },
             { status: 500 }
         )

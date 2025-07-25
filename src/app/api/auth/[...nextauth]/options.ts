@@ -1,3 +1,4 @@
+
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrtypt from 'bcrypt'
@@ -69,6 +70,8 @@ export const authOptions: NextAuthOptions = {
         async session({ session, user, token }) {
             if (token) {
                 session.user._id = token._id
+                session.user.username = token.username
+                session.user.isAcceptingMessage = token.isAcceptingMessage
             }
 
             return session
@@ -81,7 +84,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     secret: process.env.NEXT_AUTH_SECRET,
-    
+
     pages: {
         signIn: '/sign-in',
     },

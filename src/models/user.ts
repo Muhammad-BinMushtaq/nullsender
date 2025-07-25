@@ -2,9 +2,11 @@ import mongoose, { Schema } from 'mongoose'
 
 
 
+
 export interface Message extends Document {
     content: string,
     createdAt: Date,
+     _id: string
 
 }
 
@@ -17,7 +19,8 @@ const messageSchema: Schema<Message> = new Schema({
         type: Date,
         required: true,
         default: Date.now()
-    }
+    },
+    
 
 })
 
