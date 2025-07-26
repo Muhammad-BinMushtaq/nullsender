@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-   "build": "next build --ignore-eslint",
-  "start": "next start",
+    "build": "next build --no-lint",
+    "start": "next start",
     "lint": "next lint"
-
- 
   },
   "dependencies": {
     "@ai-sdk/google": "^1.2.22",
