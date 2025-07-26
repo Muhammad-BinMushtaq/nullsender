@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import messages from '../../../src/message.json'
-import { ArrowDown, Check, Mail, TrashIcon } from "lucide-react"
-import { Link } from "@react-email/components"
+import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
