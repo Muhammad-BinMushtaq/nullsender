@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" }
             },
 
-            async authorize(credentials: any): Promise<any> {
+            async authorize(credentials:any): Promise<any> {
                 await dbConnection()
 
                 try {
@@ -67,7 +67,7 @@ export const authOptions: NextAuthOptions = {
             return token
         },
 
-        async session({ session, user, token }) {
+        async session({ session, token }) {
             if (token) {
                 session.user._id = token._id
                 session.user.username = token.username

@@ -1,13 +1,11 @@
 import { dbConnection } from "@/lib/dbConnection";
 import { getServerSession, User } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
-import { success } from "zod/v4";
 import UserModel from "@/models/user";
 
 export async function DELETE(request: Request, { params }: { params: { messageId: string } }) {
     const messaegeId = params.messageId
     dbConnection()
-    const userId = params.messageId
     const session = await getServerSession(authOptions)
     const user: User = session?.user
 
@@ -43,7 +41,7 @@ export async function DELETE(request: Request, { params }: { params: { messageId
 
 
 
-    catch (error) {
+    catch (_error) {
         return Response.json(
             {
                 success: false,

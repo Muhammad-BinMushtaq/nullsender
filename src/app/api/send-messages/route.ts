@@ -1,7 +1,6 @@
 import { dbConnection } from "@/lib/dbConnection";
 import UserModel from "@/models/user";
 import { Message } from '@/models/user'
-import { log } from "node:console";
 
 
 export async function POST(request: Request) {

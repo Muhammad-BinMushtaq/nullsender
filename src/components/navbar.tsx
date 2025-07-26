@@ -4,11 +4,10 @@ import React from 'react'
 import { User } from 'next-auth'
 import Link from 'next/link'
 import { Button } from './ui/button'
-import { useRouter } from 'next/navigation'
 
 const Navbar = () => {
     const { data: session, status } = useSession()
-    const router = useRouter()
+    
 
     const user: User = session?.user
 

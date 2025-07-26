@@ -36,7 +36,7 @@ export async function GET(request: Request) {
 
 
 
-  } catch (error) {
+  } catch (_error) {
     return Response.json({
       success: false,
       message: "internal server error"

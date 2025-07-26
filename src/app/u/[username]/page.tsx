@@ -2,8 +2,8 @@
 import { messageSchema } from '@/schemas/messageSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios, { AxiosError } from 'axios'
-import { useParams, useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import z from 'zod'
@@ -12,25 +12,20 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { TypeOf } from 'zod/v4'
-import { ApiResponse } from '@/types/ApiResponse'
 import { Loader2 } from 'lucide-react'
 
-const page = () => {
+const Page = () => {
     const TemporayMessage = ["What’s a skill you’d love to master in the next year?", "If you could instantly teleport to any place for a day, where would you go?", "What’s a book, movie, or song that changed your perspective?"]
-
 
     const [sugegstMessages, setSuggestMessages] = useState(TemporayMessage)
     const [loading, setLoading] = useState(false)
 
-    const router = useRouter()
 
     const params = useParams()
 
@@ -168,4 +163,4 @@ const page = () => {
 
 }
 
-export default page
+export default Page

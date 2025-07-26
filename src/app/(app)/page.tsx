@@ -20,7 +20,7 @@ import '../../../public/dashboard.png'
 
 
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -285,4 +285,4 @@ const page = () => {
 
 }
 
-export default page
+export default Page

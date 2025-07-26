@@ -1,5 +1,4 @@
 import { dbConnection } from "@/lib/dbConnection";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 import UserModel from "@/models/user";
 
 
@@ -63,6 +62,7 @@ export async function POST(request: Request) {
 
     }
     catch (error) {
+        console.log(error)
         return Response.json({
             success: false,
             message: "Error verifying user"

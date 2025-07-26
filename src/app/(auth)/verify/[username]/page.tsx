@@ -1,11 +1,10 @@
 'use client'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import axios, { AxiosError } from 'axios'
 import * as z from 'zod';
 import { verifySchema } from "@/schemas/verifySchema"
 import { useParams, useRouter } from "next/navigation";
-import { string } from "zod/v4";
 import { ApiResponse } from "@/types/ApiResponse";
 import { useForm } from "react-hook-form";
 import {
@@ -20,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const verifyAccount = () => {
+const VerifyAccount = () => {
 
     const params = useParams<{ username: string }>()
     const router = useRouter()
@@ -49,7 +48,7 @@ const verifyAccount = () => {
 
             const AxiosError = error as AxiosError<ApiResponse>
             console.log(AxiosError)
-            let errorMessage = AxiosError.response?.data.message
+            const errorMessage = AxiosError.response?.data.message
 
             toast(errorMessage)
 
@@ -96,4 +95,4 @@ const verifyAccount = () => {
     )
 }
 
-export default verifyAccount
+export default VerifyAccount

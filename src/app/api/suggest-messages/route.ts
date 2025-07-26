@@ -1,9 +1,8 @@
 import { dbConnection } from '@/lib/dbConnection';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
-import { success } from 'zod/v4';
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
 
   dbConnection()
   try {

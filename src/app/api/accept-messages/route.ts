@@ -2,7 +2,6 @@ import { getServerSession, User } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 import UserModel from "@/models/user";
 import { dbConnection } from "@/lib/dbConnection";
-import mongoose from "mongoose";
 
 
 
@@ -57,7 +56,7 @@ export async function POST(request: Request) {
 
 // GET request for current status of accepting messages
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
     await dbConnection()
     const session = await getServerSession(authOptions)
     const user: User = session?.user
@@ -90,7 +89,7 @@ export async function GET(request: Request) {
         }, { status: 200 })
 
 
-    } catch (error) {
+    } catch (_error) {
         return Response.json({
             success: false,
             message: "Error in getting message"

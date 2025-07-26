@@ -75,7 +75,7 @@ export default function LoginUser() {
         router.push('/dashboard')
       }
 
-    } catch (error) {
+    } catch (_error) {
 
       toast("login failed")
       setIsSubmitting(false)

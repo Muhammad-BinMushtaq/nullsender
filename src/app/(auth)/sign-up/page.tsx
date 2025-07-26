@@ -15,7 +15,6 @@ import { Loader2 } from 'lucide-react';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,7 +22,7 @@ import {
 } from "@/components/ui/form"
 import Link from "next/link"
 
-const page = () => {
+const Page = () => {
   const [username, setUsername] = useState('')
   const [userMessage, setuserMessage] = useState('')
   const [isCheckingUsername, setIsCheckingUsername] = useState(false)
@@ -77,9 +76,9 @@ const page = () => {
     try {
       await axios.post<ApiResponse>('/api/sign-up', data)
 
-      toast("Account created successfully"),
+      toast("Account created successfully")
 
-        router.replace(`/verify/${username}`)
+      router.replace(`/verify/${username}`)
       setIsSubmitting(false)
     }
 
@@ -230,4 +229,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

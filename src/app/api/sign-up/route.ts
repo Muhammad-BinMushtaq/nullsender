@@ -41,8 +41,8 @@ export async function POST(request: Request) {
                 )
             }
             else {
-                existingUserByEmail.password = await bcrypt.hash(password, 10),
-                    existingUserByEmail.verifyCode = verifyCode
+                existingUserByEmail.password = await bcrypt.hash(password, 10);
+                existingUserByEmail.verifyCode = verifyCode
                 existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000)
                 await existingUserByEmail.save()
 

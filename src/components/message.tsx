@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button"
 import {
     Card,
-    CardAction,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
@@ -21,10 +19,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { X } from "lucide-react"
 import { Message } from "@/models/user"
-import axios from "axios"
-import { ApiResponse } from "@/types/ApiResponse"
-import { toast } from "sonner"
-import mongoose from "mongoose"
+
 
 type MessageCardProps = {
     message: Message,
