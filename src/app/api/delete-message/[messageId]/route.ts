@@ -1,9 +1,11 @@
+/*
 
 import { dbConnection } from "@/lib/dbConnection";
 import { getServerSession, User } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/options";
+  import { authOptions } from "../../auth/[...nextauth]/options";
 import UserModel from "@/models/user";
 import { NextRequest } from "next/server";
+
 
 export async function DELETE(
 
@@ -67,3 +69,5 @@ export async function DELETE(
     }
 
 }
+
+*/
