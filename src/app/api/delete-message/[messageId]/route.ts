@@ -4,27 +4,28 @@ import { authOptions } from "../../auth/[...nextauth]/options";
 import UserModel from "@/models/user";
 import { NextRequest } from "next/server";
 
-
 export async function DELETE(
-
     request: NextRequest, // ✅ must be from 'next/server'
-    { params }: { params: { messageId: string } } // ✅ context object
-
+    { params }: { params: Promise<{ messageId: string }> } // ✅ params is now a Promise
 ) {
-
-    const { messageId } = await params
-    // const messaegeId = params.messageId
-    // new 
-    dbConnection()
-    const session = await getServerSession(authOptions)
-    const user: User = session?.user
+    // ✅ Await the params Promise
+    const { messageId } = await params;
+    
+    // ✅ Await database connection
+    await dbConnection();
+    
+    // ✅ Get session
+    const session = await getServerSession(authOptions);
+    const user: User = session?.user;
 
     if (!session || !session.user) {
         return Response.json(
             {
                 success: false,
                 message: "Not Authenticated"
-            }, { status: 401 })
+            }, 
+            { status: 401 }
+        );
     }
 
     try {
@@ -34,37 +35,36 @@ export async function DELETE(
                 $pull: {
                     messages: {
                         _id: messageId
-
                     }
                 }
             }
-        )
+        );
 
         if (deletedMessage.modifiedCount === 0) {
             return Response.json(
                 {
                     success: false,
                     message: "Message already deleted or Not found"
-                }, { status: 401 })
+                }, 
+                { status: 404 } // ✅ Changed to 404 for not found
+            );
         }
 
         return Response.json(
             {
                 success: true,
                 message: "Message deleted successfully"
-            }, { status: 200 })
-    }
-
-
-
-
-    catch (_error) {
+            }, 
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error("Delete message error:", error); // ✅ Added error logging
         return Response.json(
             {
                 success: false,
                 message: "Something went wrong"
-            }, { status: 401 })
+            }, 
+            { status: 500 } // ✅ Changed to 500 for server error
+        );
     }
-
 }
-
