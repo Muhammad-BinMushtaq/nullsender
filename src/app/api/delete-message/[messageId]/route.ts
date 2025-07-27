@@ -1,11 +1,15 @@
-import { NextRequest } from 'next/server'
+
 import { dbConnection } from "@/lib/dbConnection";
 import { getServerSession, User } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import UserModel from "@/models/user";
+import { NextRequest } from "next/server";
 
-export async function DELETE(request: NextRequest,
-    { params }: { params: { messageId: string } }) {
+export async function DELETE(
+    request: NextRequest, // ✅ must be from 'next/server'
+    { params }: { params: { messageId: string } } // ✅ context object
+
+) {
 
     const { messageId } = params
     // const messaegeId = params.messageId
