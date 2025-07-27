@@ -6,6 +6,7 @@ import UserModel from "@/models/user";
 import { NextRequest } from "next/server";
 
 export async function DELETE(
+
     request: NextRequest, // ✅ must be from 'next/server'
     { params }: { params: { messageId: string } } // ✅ context object
 
@@ -13,6 +14,7 @@ export async function DELETE(
 
     const { messageId } = params
     // const messaegeId = params.messageId
+    // new 
     dbConnection()
     const session = await getServerSession(authOptions)
     const user: User = session?.user
