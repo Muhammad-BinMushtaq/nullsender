@@ -1,18 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NullSender – Anonymous Feedback Platform
+
+NullSender is a modern, full-stack web application built with Next.js that enables users to receive honest, anonymous feedback through a unique shareable link. Designed for privacy, simplicity, and a beautiful user experience, NullSender is ideal for creators, professionals, and anyone seeking genuine insights without revealing identities.
+
+## Features
+
+- **Anonymous Messaging:** Receive messages from anyone without exposing sender identity.
+- **Unique User Links:** Each user gets a personal URL to collect feedback.
+- **Secure Authentication:** Sign up and sign in with email or username, with email verification.
+- **Message Management:** View, delete, and manage received messages in a clean dashboard.
+- **Accept/Reject Messages:** Toggle whether you are open to receiving new messages.
+- **AI-Powered Suggestions:** Get engaging, open-ended question prompts powered by AI.
+- **Responsive UI:** Beautiful, mobile-friendly interface with smooth animations.
+- **Email Notifications:** Receive verification codes via email for secure onboarding.
+
+## Tech Stack
+
+- **Frontend:** React 19, Next.js 15 (App Router), Tailwind CSS, Radix UI, Lucide Icons
+- **Backend:** Next.js API Routes, Mongoose, MongoDB
+- **Authentication:** NextAuth.js (Credentials Provider, JWT)
+- **AI Integration:** Google Gemini via AI SDK for message suggestions
+- **Email:** Resend API with React Email templates
+- **Forms & Validation:** React Hook Form, Zod
+- **Notifications:** Sonner Toasts
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+
+- MongoDB database (local or cloud)
+- Resend API key (for email)
+- Google Gemini API key (for AI suggestions)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Muhammad-BinMushtaq/nullsender.git
+   cd nullsender
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+3. **Set up environment variables:**
+   - Copy `.env.example` to `.env` and update the values:
+     ```bash
+     NEXTAUTH_SECRET=your_nextauth_secret
+     MONGODB_URI=your_mongodb_uri
+     RESEND_API_KEY=your_resend_api_key
+     GOOGLE_GEMINI_API_KEY=your_google_gemini_api_key
+     ```
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
